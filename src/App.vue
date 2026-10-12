@@ -472,8 +472,21 @@
         <div class="footer-bottom">
           <span>© {{ new Date().getFullYear() }} MedLicense</span>
           <div>
-            <a href="#privacy">{{ t("privacy") }}</a
-            ><a href="#terms">{{ t("terms") }}</a>
+            <v-btn
+              variant="text"
+              class="footer-link"
+              @click="privacyDialog = true"
+            >
+              {{ t("privacyLink") }}
+            </v-btn>
+
+            <v-btn
+              variant="text"
+              class="footer-link"
+              @click="termsDialog = true"
+            >
+              {{ t("termsLink") }}
+            </v-btn>
           </div>
         </div>
       </v-container>
@@ -485,6 +498,196 @@
       :timeout="5000"
       >{{ errorMessage }}</v-snackbar
     >
+
+    <v-dialog v-model="privacyDialog" max-width="760" scrollable>
+      <v-card rounded="xl" :dir="locale === 'ar' ? 'rtl' : 'ltr'">
+        <v-card-title class="d-flex align-center justify-space-between pa-5">
+          <div>
+            <div class="text-h5 font-weight-bold">
+              {{ t("privacyTitle") }}
+            </div>
+
+            <div class="text-caption text-medium-emphasis mt-1">
+              {{ t("privacyLastUpdated") }}
+            </div>
+          </div>
+
+          <v-btn
+            icon="mdi-close"
+            variant="text"
+            aria-label="Close privacy policy"
+            @click="privacyDialog = false"
+          />
+        </v-card-title>
+
+        <v-divider />
+
+        <v-card-text class="pa-6 privacy-content">
+          <p class="mb-5">{{ t("privacyIntro") }}</p>
+
+          <section class="mb-5">
+            <h3>{{ t("privacyCollectionTitle") }}</h3>
+            <p>{{ t("privacyCollection") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("privacyUseTitle") }}</h3>
+            <p>{{ t("privacyUse") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("privacySharingTitle") }}</h3>
+            <p>{{ t("privacySharing") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("privacyRetentionTitle") }}</h3>
+            <p>{{ t("privacyRetention") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("privacySecurityTitle") }}</h3>
+            <p>{{ t("privacySecurity") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("privacyRightsTitle") }}</h3>
+            <p>{{ t("privacyRights") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("privacyCookiesTitle") }}</h3>
+            <p>{{ t("privacyCookies") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("privacyContactTitle") }}</h3>
+            <p>{{ t("privacyContact") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("privacyChangesTitle") }}</h3>
+            <p>{{ t("privacyChanges") }}</p>
+          </section>
+
+          <v-alert type="info" variant="tonal" density="compact" class="mt-4">
+            {{ t("privacyConsentNote") }}
+          </v-alert>
+
+          <p class="text-caption text-medium-emphasis mt-4">
+            {{ t("privacyDisclaimer") }}
+          </p>
+        </v-card-text>
+
+        <v-divider />
+
+        <v-card-actions class="pa-4">
+          <v-spacer />
+
+          <v-btn
+            color="primary"
+            variant="flat"
+            rounded="lg"
+            @click="privacyDialog = false"
+          >
+            {{ t("privacyClose") }}
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <v-dialog v-model="termsDialog" max-width="760" scrollable>
+      <v-card rounded="xl" :dir="locale === 'ar' ? 'rtl' : 'ltr'">
+        <v-card-title class="d-flex align-center justify-space-between pa-5">
+          <div>
+            <div class="text-h5 font-weight-bold">
+              {{ t("termsTitle") }}
+            </div>
+
+            <div class="text-caption text-medium-emphasis mt-1">
+              {{ t("termsLastUpdated") }}
+            </div>
+          </div>
+
+          <v-btn
+            icon="mdi-close"
+            variant="text"
+            :aria-label="t('termsClose')"
+            @click="termsDialog = false"
+          />
+        </v-card-title>
+
+        <v-divider />
+
+        <v-card-text class="pa-6 privacy-content">
+          <p class="mb-5">{{ t("termsIntro") }}</p>
+
+          <section class="mb-5">
+            <h3>{{ t("termsServicesTitle") }}</h3>
+            <p>{{ t("termsServices") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("termsNoGuaranteeTitle") }}</h3>
+            <p>{{ t("termsNoGuarantee") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("termsEligibilityTitle") }}</h3>
+            <p>{{ t("termsEligibility") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("termsDocumentsTitle") }}</h3>
+            <p>{{ t("termsDocuments") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("termsFeesTitle") }}</h3>
+            <p>{{ t("termsFees") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("termsThirdPartiesTitle") }}</h3>
+            <p>{{ t("termsThirdParties") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("termsAcceptableUseTitle") }}</h3>
+            <p>{{ t("termsAcceptableUse") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("termsLiabilityTitle") }}</h3>
+            <p>{{ t("termsLiability") }}</p>
+          </section>
+
+          <section class="mb-5">
+            <h3>{{ t("termsChangesTitle") }}</h3>
+            <p>{{ t("termsChanges") }}</p>
+          </section>
+
+          <v-alert type="info" variant="tonal" density="compact" class="mt-4">
+            {{ t("termsDisclaimer") }}
+          </v-alert>
+        </v-card-text>
+
+        <v-divider />
+
+        <v-card-actions class="pa-4">
+          <v-spacer />
+
+          <v-btn
+            color="primary"
+            variant="flat"
+            rounded="lg"
+            @click="termsDialog = false"
+          >
+            {{ t("termsClose") }}
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -500,6 +703,8 @@ const loading = ref(false);
 const submittedReference = ref("");
 const errorMessage = ref("");
 const snackbar = ref(false);
+const privacyDialog = ref(false);
+const termsDialog = ref(false);
 const form = reactive({
   fullName: "",
   phone: "",
@@ -1086,5 +1291,28 @@ function goHome() {
   .trust-row {
     gap: 16px;
   }
+}
+
+.footer-link {
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.privacy-content {
+  line-height: 1.85;
+  color: rgb(var(--v-theme-on-surface));
+}
+
+.privacy-content h3 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(var(--v-theme-primary));
+}
+
+.privacy-content p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
 }
 </style>
