@@ -618,7 +618,6 @@ async function onSubmit() {
   }
 }
 
-
 function goHome() {
   // Clear all form fields
   Object.assign(form, {
@@ -645,7 +644,6 @@ function goHome() {
     behavior: "smooth",
   });
 }
-
 </script>
 
 <style scoped>
